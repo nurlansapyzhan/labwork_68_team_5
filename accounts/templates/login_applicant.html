@@ -6,5 +6,69 @@
     <a href="{% url 'register' %}" class="login_link">Register</a>
 {% endblock %}
 {% block content %}
-    <h1>Test Login</h1>
+    <div class="cards">
+        <div class="card mt-3">
+            <div class="form_block">
+                <div class="form_inputs_block">
+                    <div class="form_inputs_header mt-3">
+                        <h3>Поиск работы</h3>
+                    </div>
+                    <div class="form_inputs_data">
+                        <input type="text" placeholder="Электронная почта или телефон" class="login_input">
+                        <input type="password" placeholder="Пароль" class="login_input mt-2">
+                    </div>
+                    <div class="form_inputs_button mt-3">
+                        <button class="btn btn-primary">Войти</button>
+                    </div>
+                </div>
+                <div class="form_image_block mt-3"></div>
+            </div>
+            <div class="card_links_block">
+                <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Вконтакте">
+                        <img src="/static/images/vk_logo.png" alt="vk" class="social_logos_image">
+                    </a>
+                </span>
+                <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Google">
+                        <img src="/static/images/google_logo.png" alt="google" class="social_logos_image">
+                    </a>
+                </span>
+                <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Мой мир">
+                        <img src="/static/images/my_world.png" alt="Мой мир" class="social_logos_image">
+                    </a>
+                </span>
+                <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Одноклассники">
+                        <img src="/static/images/odnoklassniki.png" alt="Одноклассники" class="social_logos_image">
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="card mt-5">
+            <div class="form_block">
+                <div class="form_inputs_block">
+                    <div class="form_inputs_header mt-3">
+                        <h3>Поиск сотрудников</h3>
+                    </div>
+                    <div class="form_inputs_data">
+                        <p class="form_inputs_text">Размещение вакансий и доступ к базе <br>резюме</p>
+                    </div>
+                    <div class="form_inputs_button mt-3">
+                        <button class="btn btn-primary employer_login_button"><a href="{% url 'login_employer' %}"
+                                                                                 class="form_inputs_button_link">Я ищу
+                            сотрудников</a></button>
+                    </div>
+                </div>
+                <div class="form_image_block_employer mt-3"></div>
+            </div>
+        </div>
+        <div class="privacy_policy mt-5">
+            <p class="privacy_policy_text">
+                Нажимая «войти», вы подтверждаете, что ознакомлены, полностью согласны и принимаете условия
+                <a href="#" class="privacy_policy_link">«Соглашения об оказании услуг по содействию в трудоустройстве (оферта)»</a>
+            </p>
+        </div>
+    </div>
 {% endblock %}

@@ -6,5 +6,47 @@
     <a href="{% url 'register' %}" class="login_link">Register</a>
 {% endblock %}
 {% block content %}
-    <h1>Test Login</h1>
+    <div class="cards">
+        <div class="card mt-3">
+            <div class="form_block">
+                <div class="form_inputs_block">
+                    <div class="form_inputs_header mt-3">
+                        <h3>Поиск сотрудников</h3>
+                    </div>
+                    <div class="form_inputs_data">
+                        <input type="text" placeholder="Email" class="login_input">
+                        <input type="password" placeholder="Пароль" class="login_input mt-2">
+                    </div>
+                    <div class="form_inputs_button mt-3">
+                        <button class="btn btn-primary">Войти</button>
+                    </div>
+                </div>
+                <div class="form_image_block_employer mt-3"></div>
+            </div>
+        </div>
+        <div class="card mt-5">
+            <div class="form_block">
+                <div class="form_inputs_block">
+                    <div class="form_inputs_header mt-3">
+                        <h3>Поиск работы</h3>
+                    </div>
+                    <div class="form_inputs_data">
+                        <p class="form_inputs_text">Публикация резюме и поиск по вакансиям</p>
+                    </div>
+                    <div class="form_inputs_button mt-3">
+                        <button class="btn btn-primary employer_login_button"><a href="{% url 'login_applicant' %}"
+                                                                                 class="form_inputs_button_link">Я ищу
+                            работу</a></button>
+                    </div>
+                </div>
+                <div class="form_image_block mt-3"></div>
+            </div>
+        </div>
+        <div class="privacy_policy mt-5">
+            <p class="privacy_policy_text">
+                Нажимая «войти», вы подтверждаете, что ознакомлены, полностью согласны и принимаете условия
+                <a href="#" class="privacy_policy_link">«Соглашения об оказании услуг по содействию в трудоустройстве (оферта)»</a>
+            </p>
+        </div>
+    </div>
 {% endblock %}

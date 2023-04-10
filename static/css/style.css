@@ -1,0 +1,139 @@
+.custom_navbar_container {
+    width: 1200px;
+    justify-content: flex-start !important;
+}
+
+.navbar {
+    height: 50px;
+}
+
+.hh_logo_navbar_right {
+    height: 38px;
+}
+
+.login_link {
+    text-decoration: none;
+    color: white;
+}
+
+.login_link:hover {
+    color: navajowhite;
+}
+
+.form_image_block {
+    background-image: url("/static/images/applicant.svg");
+    height: 110px;
+    width: 110px;
+    background-repeat: no-repeat;
+}
+
+.form_image_block_employer {
+    background-image: url("/static/images/employer.svg");
+    height: 110px;
+    width: 110px;
+    background-repeat: no-repeat;
+}
+
+.form_block {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form_inputs_data {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.login_input {
+    border-radius: 4px;
+    width: 270px;
+}
+
+.social_logos_link {
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    border: 1px solid #d4d7d9;
+    padding: 0;
+    min-width: 40px;
+    height: 40px;
+    text-decoration: none;
+}
+
+.social_logos_image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.card_links_block {
+    margin: 10px 0 10px 34px;
+}
+
+.form_inputs_button{
+    margin-bottom: 10px;
+}
+
+.form_inputs_button_link{
+    text-decoration: none;
+    color: #1785e5;
+}
+
+.form_inputs_button_link:hover{
+    color: white;
+}
+
+.employer_login_button{
+    background-color: white;
+}
+
+.employer_login_button:hover{
+    background-color: #1785e5;
+}
+
+.privacy_policy{
+    width: 500px;
+}
+
+.privacy_policy_link{
+    text-decoration: none;
+}
+
+.footer{
+    background-color: black;
+}
+
+.footer_header{
+    color: white;
+}
+
+.copyright{
+    color: white;
+}
+
+.wrapper{
+    position: relative;
+    min-height: 100%;
+}
+
+.row_custom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-black bg-dark">
     <div class="container-fluid custom_navbar_container">
         <a class="navbar-brand" href="{% url 'index' %}">
             <img class="hh_logo_navbar_right" src="/static/images/hh.ico" alt="HH">
@@ -21,7 +21,6 @@
         {% block menu %}
         {% endblock %}
     </div>
-
 </nav>
 <div class="container">
     {% block content %}
