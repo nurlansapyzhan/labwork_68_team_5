@@ -1,8 +1,16 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator
 
-from accounts.models import ApplicantProfile
+CHOICE_ROLE = [
+    ('True', 'Я соикатель'),
+    ('False', 'Я работодатель')
+]
+
+def validate_digits(value):
+    if not value.isdigit():
+        raise ValidationError('Phone number should contain only digits')
 
 
 class LoginForm(forms.Form):
@@ -15,95 +23,46 @@ class LoginForm(forms.Form):
     username.widget.attrs.update({'class': 'login_input'})
     password.widget.attrs.update({'class': 'login_input mt-2'})
 
-class CustomApplicantCreationForm(forms.ModelForm):
-    password = forms.CharField(
-        label='Пароль',
-        strip=False,
-        required=True,
-        widget=forms.PasswordInput
-    )
-    password_confirm = forms.CharField(
-        label='Подтвердите пароль',
-        strip=False,
-        required=True,
-        widget=forms.PasswordInput
-    )
-    email = forms.CharField(
-        label='Электронная почта',
-        required=True,
-        widget=forms.TextInput()
-    )
-    username = forms.CharField(
-        label='Логин',
-        required=True,
-        widget=forms.TextInput()
-    )
-    phone = forms.IntegerField(
-        label='Телефон',
-        required=False
-    )
-    birth_date = forms.DateField(
-        label='Дата рождения',
-        required=False
-    )
-    avatar = forms.ImageField(
-        label='Аватар',
-        required=False,
-    )
-    location = forms.CharField(
-        label='Местоположения',
-        required=False,
-        widget=forms.TextInput()
-    )
-    sex = forms.CharField(
-        label='Пол',
-        widget=forms.Select(),
-        required=False
-    )
-    citizenship = forms.CharField(
-        label='Гражданство',
-        required=False,
-        widget=forms.TextInput()
-    )
-    bio = forms.CharField(
-        label='Биография',
-        widget=forms.TextInput(),
-        required=False
-    )
-    has_experience = forms.BooleanField(
-        label='Наличие опыта',
-        required=False
-    )
-    experience_year = forms.FloatField(
-        label='Годы опыта',
-        required=False
-    )
-    has_driving_lis = forms.BooleanField(
-        label='Наличие водительского права',
-        required=False
-    )
+
+class CustomUserCreationForm(forms.ModelForm):
+    username = forms.CharField(label='', required=True,
+                               widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя'}))
+    email = forms.EmailField(label='', required=True,
+                             widget=forms.EmailInput(attrs={'placeholder': 'Адрес электронной почты'}))
+    password = forms.CharField(label='', strip=False, required=True,
+                               widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}))
+    password_confirm = forms.CharField(label='', strip=False, required=True,
+                                       widget=forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}))
+    avatar = forms.ImageField(required=False)
+    is_applicant = forms.CharField(required=True, widget=forms.RadioSelect(choices=CHOICE_ROLE))
+    phone_number = forms.CharField(max_length=11,
+                                   validators=[MinLengthValidator(11), validate_digits],
+                                   widget=forms.TextInput(attrs={'placeholder': "Номер телефона"}),
+                                   label='')
 
     class Meta:
-        model = User
-        fields = ('username', 'password',
-                  'password_confirm', 'first_name',
-                  'last_name', 'email',
-                  'phone', 'birth_date', 'location',
-                  'sex', 'citizenship', 'has_experience',
-                  'experience_year', 'has_driving_lis',
-                  'bio', 'avatar')
+        model = get_user_model()
+        fields = (
+            'username', 'email', 'password', 'password_confirm', 'avatar', 'is_applicant', 'phone_number'
+        )
+        labels = {
+            'avatar': 'Аватар'
+        }
 
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
         password_confirm = cleaned_data.get('password_confirm')
         if password and password_confirm and password != password_confirm:
-            raise forms.ValidationError('Пароли не совпадают')
+            raise forms.ValidationError('Пароли не совпадают!')
 
     def save(self, commit=True):
-        user = super().save(commit=False)
+        user = super(CustomUserCreationForm, self).save(commit=False)
         user.set_password(self.cleaned_data.get('password'))
+        user.email = self.cleaned_data['email']
+        user.username = self.cleaned_data['username']
+        if self.cleaned_data['avatar']:
+            user.avatar = self.cleaned_data['avatar']
         if commit:
             user.save()
-            ApplicantProfile.objects.get_or_create(user=user)
         return user

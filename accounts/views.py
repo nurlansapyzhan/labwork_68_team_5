@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import TemplateView, CreateView
 from django.shortcuts import redirect
 
-from .forms import LoginForm, CustomApplicantCreationForm
+from .forms import LoginForm, CustomUserCreationForm
 
 
 class LoginApplicantView(TemplateView):
@@ -41,13 +41,14 @@ class LoginEmployerView(TemplateView):
 
 class RegisterView(CreateView):
     template_name = 'register.html'
-    form_class = CustomApplicantCreationForm
+    form_class = CustomUserCreationForm
     success_url = '/'
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.save()
             login(request, user)
             return redirect(self.success_url)
         context = {'form': form}
