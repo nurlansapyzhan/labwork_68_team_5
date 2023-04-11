@@ -13,13 +13,17 @@
                     <div class="form_inputs_header mt-3">
                         <h3>Поиск работы</h3>
                     </div>
+                    <form method="post">
                     <div class="form_inputs_data">
-                        <input type="text" placeholder="Электронная почта или телефон" class="login_input">
-                        <input type="password" placeholder="Пароль" class="login_input mt-2">
+                        {% csrf_token %}
+                        {{ form }}
+<!--                        <input type="text" placeholder="Электронная почта или телефон" class="login_input">-->
+<!--                        <input type="password" placeholder="Пароль" class="login_input mt-2">-->
                     </div>
                     <div class="form_inputs_button mt-3">
-                        <button class="btn btn-primary">Войти</button>
+                        <button type="submit" class="btn btn-primary">Войти</button>
                     </div>
+                    </form>
                 </div>
                 <div class="form_image_block mt-3"></div>
             </div>
