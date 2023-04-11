@@ -6,6 +6,7 @@
     <div class="container">
         <h1>Test Index</h1>
         <a href="{% url 'login_applicant' %}">Войти</a>
+        <a href="{% url 'register' %}">Зарегистрироваться</a>
         <a href="#">Создать резюме</a>
         {% if user.is_authenticated %}
             <a href="{% url 'logout' %}">Выйти</a>

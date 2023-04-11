@@ -11,13 +11,12 @@ class SexChoice(TextChoices):
 class ApplicantProfile(models.Model):
     user = models.OneToOneField(
         get_user_model(),
-        related_name='applicant_profile',
+        related_name='profile',
         on_delete=models.CASCADE,
         verbose_name='Профиль заявителя'
     )
     phone = models.IntegerField(
-        null=False,
-        blank=False,
+        null=True,
         verbose_name='Телефон номера'
     )
     birth_date = models.DateField(
