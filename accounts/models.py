@@ -21,7 +21,6 @@ class Account(AbstractUser):
     phone_number = models.CharField(
         max_length=11,
         verbose_name='Номер телефона',
-        unique=True,
         null=False,
         validators=[MinLengthValidator(11), validate_digits],
     )
@@ -32,10 +31,10 @@ class Account(AbstractUser):
         verbose_name='Аватар',
         default='avatars/no_image.png'
     )
-    is_applicant = models.BooleanField(verbose_name='Является соискателем')
+    is_applicant = models.BooleanField(verbose_name='Является соискателем', null=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
     object = UserManager()
 
