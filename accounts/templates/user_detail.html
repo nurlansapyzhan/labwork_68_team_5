@@ -3,10 +3,11 @@
 
 {% block menu %}
     <li><a href="{% url 'password_change' user.pk %}" class="btn btn-primary">Смена пароля</a></li>
+    <li><a href="{% url 'change' user.pk %}" class="btn btn-primary">Редактировать профиль</a></li>
 {% endblock %}
 
 {% block content %}
-    <img class="avatar" src="{{ user_obj.profile.avatar.url }}" width="250" height="250" alt="user picture">
+    <img class="avatar" src="{{ user_obj.avatar.url }}" width="250" height="250" alt="user picture">
     <p>Имя пользователя: {{ user_obj.username }}</p>
     <p>Имя: {{ user_obj.first_name }}</p>
     <p>Фамилия: {{ user_obj.last_name }}</p>
