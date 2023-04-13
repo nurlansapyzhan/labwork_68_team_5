@@ -1,7 +1,7 @@
 from django.urls import path
 
 from accounts.views import RegisterView, LoginEmployerView, LoginApplicantView, logout_view, ProfileView, \
-    UserPasswordChangeView
+    UserPasswordChangeView, UserChangeView
 
 urlpatterns = [
     path('login/employer', LoginEmployerView.as_view(), name='login_employer'),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('logout/', logout_view, name='logout'),
     path('profile/<int:pk>', ProfileView.as_view(), name='detail'),
-    path('<int:pk>/password_change', UserPasswordChangeView.as_view(), name='password_change')
+    path('profile/<int:pk>/change/', UserChangeView.as_view(), name='change'),
+    path('<int:pk>/password_change', UserPasswordChangeView.as_view(), name='password_change'),
 ]

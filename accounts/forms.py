@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 
+from .models import Account
+
 CHOICE_ROLE = [
     ('True', 'Я соикатель'),
     ('False', 'Я работодатель')
@@ -96,3 +98,14 @@ class PasswordChangeForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ['password', 'password_confirm', 'old_password']
+
+class UserChangeForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ('first_name', 'last_name', 'email', 'phone_number', 'avatar')
+        labels = {'first_name': 'Имя',
+                  'last_name': 'Фамилия',
+                  'email': 'Почта',
+                  'phone_number': 'Телефон номера',
+                  'avatar': 'Аватар'}
+
