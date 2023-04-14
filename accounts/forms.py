@@ -34,7 +34,7 @@ class CustomUserCreationForm(forms.ModelForm):
     password_confirm = forms.CharField(label='', strip=False, required=True,
                                        widget=forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}))
     avatar = forms.ImageField(required=False)
-    is_applicant = forms.CharField(required=True, widget=forms.RadioSelect(choices=CHOICE_ROLE))
+    is_applicant = forms.CharField(required=True, widget=forms.RadioSelect(choices=CHOICE_ROLE), label='')
     phone_number = forms.CharField(max_length=11,
                                    validators=[MinLengthValidator(11), validate_digits],
                                    widget=forms.TextInput(attrs={'placeholder': "Номер телефона"}),
