@@ -85,55 +85,63 @@
     margin: 10px 0 10px 34px;
 }
 
-.form_inputs_button{
+.form_inputs_button {
     margin-bottom: 10px;
 }
 
-.form_inputs_button_link{
+.form_inputs_button_link {
     text-decoration: none;
     color: #1785e5;
 }
 
-.form_inputs_button_link:hover{
+.form_inputs_button_link:hover {
     color: white;
 }
 
-.employer_login_button{
+.employer_login_button {
     background-color: white;
 }
 
-.employer_login_button:hover{
+.employer_login_button:hover {
     background-color: #1785e5;
 }
 
-.privacy_policy{
+.privacy_policy {
     width: 500px;
 }
 
-.privacy_policy_link{
+.privacy_policy_link {
     text-decoration: none;
 }
 
-.footer{
+.footer {
     background-color: black;
 }
 
-.footer_header{
+.footer_header {
     color: white;
 }
 
-.copyright{
+.copyright {
     color: white;
 }
 
-.wrapper{
+.wrapper {
     position: relative;
     min-height: 100%;
 }
 
-.row_custom{
+.row_custom {
     position: absolute;
     bottom: 0;
     left: 0;
 }
 
+.register_form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-top: 5px;
+}

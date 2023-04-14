@@ -7,10 +7,67 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <form method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="зарегистрироваться" class="btn btn-primary">
-        </form>
+        <div class="cards">
+            <div class="card mt-3">
+                <div class="form_block ms-3">
+                    <div class="form_inputs_block">
+                        <div class="form_inputs_header mt-3">
+                            <h3>Регистрация</h3>
+                        </div>
+                        <form method="post" class="register_form">
+                            {% csrf_token %}
+                            {{ form }}
+                            <br>
+                            <input type="submit" value="Регистрация" class="btn btn-primary mt-2">
+                        </form>
+                    </div>
+                    <div class="form_image_block mt-3" id="image_block"></div>
+                </div>
+                <div class="card_links_block">
+                    <p>Быстрое создание резюме через соцсеть</p>
+                    <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Вконтакте">
+                        <img src="/static/images/vk_logo.png" alt="vk" class="social_logos_image">
+                    </a>
+                    </span>
+                    <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Google">
+                        <img src="/static/images/google_logo.png" alt="google" class="social_logos_image">
+                    </a>
+                    </span>
+                    <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Мой мир">
+                        <img src="/static/images/my_world.png" alt="Мой мир" class="social_logos_image">
+                    </a>
+                    </span>
+                    <span class="socials_logos">
+                    <a href="#" class="social_logos_link" title="Одноклассники">
+                        <img src="/static/images/odnoklassniki.png" alt="Одноклассники" class="social_logos_image">
+                    </a>
+                    </span>
+                </div>
+            </div>
+            <div class="privacy_policy mt-5">
+                <p class="privacy_policy_text">
+                    Нажимая «Зарегистрироваться», вы подтверждаете, что ознакомлены и принимаете условия
+                    <a href="#" class="privacy_policy_link">Соглашения</a>, и даете согласие на обработку персональных
+                    данных в соответствии с условиями Соглашения
+                </p>
+            </div>
+        </div>
     </div>
+    <script>
+        let applicantRadio = document.getElementById('id_is_applicant_0')
+        let employerRadio = document.getElementById('id_is_applicant_1')
+        let usernameInput = document.getElementById('id_username')
+        let imageBlock = document.getElementById('image_block')
+        applicantRadio.addEventListener('click', () => {
+            usernameInput.placeholder = 'Имя пользователя';
+            imageBlock.style.backgroundImage = 'url("/static/images/applicant.svg")';
+        });
+        employerRadio.addEventListener('click', () => {
+            usernameInput.placeholder = 'Имя компании';
+            imageBlock.style.backgroundImage = 'url("/static/images/employer.svg")'
+        })
+    </script>
 {% endblock %}

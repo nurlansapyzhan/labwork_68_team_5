@@ -10,7 +10,7 @@ class LoginForm(forms.Form):
                                widget=forms.TextInput(
                                    attrs={'placeholder': 'Электронная почта или телефон'}))
     password = forms.CharField(required=True, label='',
-                               widget=forms.PasswordInput)
+                               widget=forms.PasswordInput(attrs={'placeholder': "Пароль"}))
 
     username.widget.attrs.update({'class': 'login_input'})
     password.widget.attrs.update({'class': 'login_input mt-2'})
