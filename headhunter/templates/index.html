@@ -1,15 +1,128 @@
 {% extends 'base.html' %}
-{% block title %}
-    Работа в Казахстане, поиск персонала и публикация вакансий - hh.kz
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
 {% block content %}
     <div class="container">
-        <h1>Test Index</h1>
-        <a href="{% url 'login_applicant' %}">Войти</a>
-        <a href="{% url 'register' %}">Зарегистрироваться</a>
-        <a href="#">Создать резюме</a>
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Выйти</a>
-        {% endif %}
+        <div class="search-container mt-4 mx-5">
+            <form class="d-flex w-50">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <h4>Мои события</h4>
+                <ol class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                  d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                        </svg>
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                <a href="#" class="text-muted a-index-links">Отклики и приглашения</a>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                  d="M12 6.5a9.77 9.77 0 0 1 8.82 5.5c-1.65 3.37-5.02 5.5-8.82 5.5S4.83 15.37 3.18 12A9.77 9.77 0 0 1 12 6.5m0-2C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 5a2.5 2.5 0 0 1 0 5a2.5 2.5 0 0 1 0-5m0-2c-2.48 0-4.5 2.02-4.5 4.5s2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5s-2.02-4.5-4.5-4.5z"/>
+                        </svg>
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                <a href="#" class="text-muted a-index-links">Просмотры резюме</a>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                  d="m12.1 18.55l-.1.1l-.11-.1C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5c1.54 0 3.04 1 3.57 2.36h1.86C13.46 6 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5c0 2.89-3.14 5.74-7.9 10.05M16.5 3c-1.74 0-3.41.81-4.5 2.08C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.41 2 8.5c0 3.77 3.4 6.86 8.55 11.53L12 21.35l1.45-1.32C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z"/>
+                        </svg>
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                <a href="#" class="text-muted a-index-links">Автопоиски</a>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 1024 1024">
+                            <path fill="currentColor"
+                                  d="M1014.64 969.04L703.71 656.207c57.952-69.408 92.88-158.704 92.88-256.208c0-220.912-179.088-400-400-400s-400 179.088-400 400s179.088 400 400 400c100.368 0 192.048-37.056 262.288-98.144l310.496 312.448c12.496 12.497 32.769 12.497 45.265 0c12.48-12.496 12.48-32.752 0-45.263zM396.59 736.527c-185.856 0-336.528-150.672-336.528-336.528S210.734 63.471 396.59 63.471c185.856 0 336.528 150.672 336.528 336.528S582.446 736.527 396.59 736.527z"/>
+                        </svg>
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">
+                                <a href="#" class="text-muted a-index-links">Избранные вакансии</a>
+                            </div>
+                        </div>
+                        <span class="badge bg-primary rounded-pill">14</span>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-6 col-sm-3">
+                <h4>
+                    Рекомендуем лично вам
+                </h4>
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col-6 col-sm-4">
+                            <h6>Work</h6>
+                            <p>Salary</p>
+                            <p>Company</p>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <h6>Work</h6>
+                            <p>Salary</p>
+                            <p>Company</p>
+                        </div>
+
+                        <!-- Force next columns to break to new line at md breakpoint and up -->
+                        <div class="w-100 d-none d-md-block"></div>
+
+                        <div class="col-6 col-sm-4">
+                            <h6>Work</h6>
+                            <p>Salary</p>
+                            <p>Company</p>
+                        </div>
+                        <div class="col-6 col-sm-4">
+                            <h6>Work</h6>
+                            <p>Salary</p>
+                            <p>Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100"></div>
+
+            <div class="col-6 col-sm-3">
+                <h4>Подработка
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                        <path fill="orange"
+                              d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1L4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04L11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
+                    </svg>
+                </h4>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-outline-dark">Показать все</button>
+                    <button type="button" class="btn btn-outline-dark">На карте</button>
+                </div>
+            </div>
+        </div>
     </div>
+    <hr>
 {% endblock %}
+</body>
+</html>
