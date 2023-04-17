@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Add resume{% endblock %}
+{% block content %}
+<div class="container">
+      <form action="{% url 'resume_add' %}" method="post">
+        {% include 'partial/resume_form.html' with button_text='Создать' %}
+      </form>
+</div>
+{% endblock content %}
